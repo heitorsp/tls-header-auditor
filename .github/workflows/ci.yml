@@ -29,7 +29,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '1.24'
+          go-version: 'stable'
           check-latest: true
 
       - name: Verify dependencies
@@ -56,7 +56,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '1.24'
+          go-version: 'stable'
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
@@ -75,13 +75,13 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '1.24'
+          go-version: 'stable'
 
       - name: Run govulncheck
-        # govulncheck is a security scanner, so we deliberately track its latest
-        # release rather than pin it. Recent releases need a newer Go toolchain
-        # than the one pinned above; GOTOOLCHAIN=auto lets `go install` fetch it
-        # just to build the tool, while the module stays on the Go set up here.
+        # govulncheck is a security scanner, so we track its latest release
+        # rather than pin it. GOTOOLCHAIN=auto lets `go install` fetch a newer
+        # toolchain if a future govulncheck needs one, without changing the Go
+        # the module is analyzed with.
         env:
           GOTOOLCHAIN: auto
         run: |

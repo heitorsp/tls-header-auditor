@@ -39,6 +39,8 @@ recommendation. The target gets a score from 0–100 and a letter grade.
 
 ## Install
 
+Requires Go 1.25 or newer (a currently supported release).
+
 ```bash
 go install github.com/h3m/tls-header-auditor/cmd/tlsaudit@latest
 ```

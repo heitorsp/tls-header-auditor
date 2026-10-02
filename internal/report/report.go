@@ -185,7 +185,7 @@ func (r *Report) WriteJSON(w io.Writer) error {
 // WriteText emits a human-readable report. useColor adds ANSI color when true.
 func (r *Report) WriteText(w io.Writer, useColor bool) error {
 	p := func(format string, a ...any) {
-		fmt.Fprintf(w, format, a...)
+		_, _ = fmt.Fprintf(w, format, a...)
 	}
 
 	p("\n=== TLS & Header Audit: %s ===\n", r.Target)

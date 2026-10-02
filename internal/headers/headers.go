@@ -13,6 +13,7 @@ import (
 // Severity ranks a finding by how much it matters.
 type Severity string
 
+// Severity levels, from most to least serious, plus OK for a passing check.
 const (
 	SeverityHigh   Severity = "HIGH"
 	SeverityMedium Severity = "MEDIUM"
@@ -79,7 +80,7 @@ var checks = []headerCheck{
 		name:          "X-Frame-Options",
 		missingSev:    SeverityMedium,
 		missingAdvice: "Add X-Frame-Options: DENY (or SAMEORIGIN), or a CSP frame-ancestors directive, to prevent clickjacking.",
-		evaluate: func(v string) (Severity, string) {
+		evaluate: func(_ string) (Severity, string) {
 			return SeverityOK, "Clickjacking protection is set."
 		},
 	},
@@ -98,7 +99,7 @@ var checks = []headerCheck{
 		name:          "Referrer-Policy",
 		missingSev:    SeverityLow,
 		missingAdvice: "Add a Referrer-Policy (e.g. strict-origin-when-cross-origin) to limit referrer leakage.",
-		evaluate: func(v string) (Severity, string) {
+		evaluate: func(_ string) (Severity, string) {
 			return SeverityOK, "Referrer policy is set."
 		},
 	},
@@ -106,7 +107,7 @@ var checks = []headerCheck{
 		name:          "Permissions-Policy",
 		missingSev:    SeverityLow,
 		missingAdvice: "Add a Permissions-Policy to restrict powerful browser features (camera, geolocation, etc.).",
-		evaluate: func(v string) (Severity, string) {
+		evaluate: func(_ string) (Severity, string) {
 			return SeverityOK, "Permissions policy is set."
 		},
 	},
@@ -126,7 +127,7 @@ func Analyze(url string, timeout time.Duration) (*Result, error) {
 			// We audit headers regardless of cert validity; tlscheck handles the cert.
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
-		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+		CheckRedirect: func(_ *http.Request, via []*http.Request) error {
 			if len(via) >= 5 {
 				return fmt.Errorf("stopped after 5 redirects")
 			}
@@ -144,7 +145,7 @@ func Analyze(url string, timeout time.Duration) (*Result, error) {
 	if err != nil {
 		return nil, fmt.Errorf("fetching %s: %w", url, err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	res := &Result{URL: url, StatusCode: resp.StatusCode}
 

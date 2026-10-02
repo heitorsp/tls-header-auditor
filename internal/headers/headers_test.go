@@ -22,7 +22,7 @@ func TestNormalizeURL(t *testing.T) {
 }
 
 func TestAnalyze_MissingHeaders(t *testing.T) {
-	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		// Intentionally send no security headers, plus a leaky Server header.
 		w.Header().Set("Server", "TestStack/9.9")
 		w.WriteHeader(http.StatusOK)
@@ -54,7 +54,7 @@ func TestAnalyze_MissingHeaders(t *testing.T) {
 }
 
 func TestAnalyze_StrongHeaders(t *testing.T) {
-	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		h := w.Header()
 		h.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
 		h.Set("Content-Security-Policy", "default-src 'self'")

@@ -57,7 +57,7 @@ func Analyze(host, defaultPort string, timeout time.Duration) (*Result, error) {
 	if err != nil {
 		return nil, fmt.Errorf("tls handshake with %s:%s failed: %w", h, port, err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 
 	state := conn.ConnectionState()
 	if len(state.PeerCertificates) == 0 {
@@ -96,7 +96,7 @@ func supportedVersions(host, port string, timeout time.Duration) []string {
 		}, timeout)
 		if err == nil {
 			found = append(found, v.name)
-			conn.Close()
+			_ = conn.Close()
 		}
 	}
 	return found

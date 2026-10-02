@@ -16,9 +16,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/h3m/tls-header-auditor/internal/headers"
-	"github.com/h3m/tls-header-auditor/internal/report"
-	"github.com/h3m/tls-header-auditor/internal/tlscheck"
+	"github.com/heitorsp/tls-header-auditor/internal/headers"
+	"github.com/heitorsp/tls-header-auditor/internal/report"
+	"github.com/heitorsp/tls-header-auditor/internal/tlscheck"
 )
 
 // version is overridden at build time via -ldflags "-X main.version=...".

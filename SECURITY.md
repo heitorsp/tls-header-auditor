@@ -3,7 +3,7 @@
 ## Reporting a Vulnerability
 
 Please report security issues privately via GitHub's
-[Private Vulnerability Reporting](https://github.com/h3m/tls-header-auditor/security/advisories/new)
+[Private Vulnerability Reporting](https://github.com/heitorsp/tls-header-auditor/security/advisories/new)
 rather than opening a public issue.
 
 You can expect an acknowledgement within a few days. Please include steps to

@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/h3m/tls-header-auditor/internal/headers"
-	"github.com/h3m/tls-header-auditor/internal/tlscheck"
+	"github.com/heitorsp/tls-header-auditor/internal/headers"
+	"github.com/heitorsp/tls-header-auditor/internal/tlscheck"
 )
 
 func TestBuild_ScoreAndGrade(t *testing.T) {

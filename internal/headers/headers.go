@@ -139,7 +139,7 @@ func Analyze(url string, timeout time.Duration) (*Result, error) {
 	if err != nil {
 		return nil, fmt.Errorf("building request for %s: %w", url, err)
 	}
-	req.Header.Set("User-Agent", "tls-header-auditor/1.0 (+https://github.com/h3m/tls-header-auditor)")
+	req.Header.Set("User-Agent", "tls-header-auditor/1.0 (+https://github.com/heitorsp/tls-header-auditor)")
 
 	resp, err := client.Do(req)
 	if err != nil {

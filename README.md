@@ -42,13 +42,13 @@ recommendation. The target gets a score from 0–100 and a letter grade.
 Requires Go 1.25 or newer (a currently supported release).
 
 ```bash
-go install github.com/h3m/tls-header-auditor/cmd/tlsaudit@latest
+go install github.com/heitorsp/tls-header-auditor/cmd/tlsaudit@latest
 ```
 
 Or build from source:
 
 ```bash
-git clone https://github.com/h3m/tls-header-auditor.git
+git clone https://github.com/heitorsp/tls-header-auditor.git
 cd tls-header-auditor
 go build -o tlsaudit ./cmd/tlsaudit
 ```

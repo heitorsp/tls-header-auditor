@@ -1,3 +1,3 @@
-module github.com/h3m/tls-header-auditor
+module github.com/heitorsp/tls-header-auditor
 
 go 1.25

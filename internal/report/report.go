@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/h3m/tls-header-auditor/internal/headers"
-	"github.com/h3m/tls-header-auditor/internal/tlscheck"
+	"github.com/heitorsp/tls-header-auditor/internal/headers"
+	"github.com/heitorsp/tls-header-auditor/internal/tlscheck"
 )
 
 // Report is the top-level structure for one audited target.

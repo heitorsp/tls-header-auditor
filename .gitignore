@@ -1,0 +1,20 @@
+# Binaries
+/tlsaudit
+/dist/
+*.exe
+*.out
+
+# Go
+*.test
+*.prof
+coverage.*
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Env / secrets — never commit
+.env
+*.pem
+*.key

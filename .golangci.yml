@@ -1,0 +1,18 @@
+# golangci-lint configuration.
+# A focused, non-noisy set: catches real bugs and style drift without fighting
+# idiomatic Go.
+version: "2"
+
+linters:
+  enable:
+    - errcheck      # unchecked errors
+    - govet         # suspicious constructs
+    - ineffassign   # ineffective assignments
+    - staticcheck   # broad correctness + style
+    - unused        # unused code
+    - misspell      # typos in comments/strings
+    - revive        # style, replaces golint
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
